@@ -149,3 +149,176 @@ input:focus, textarea:focus {
 button {
   font-family: 'Orbitron', sans-serif;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: #020d1f;
+  color: #e0f7ff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 10px cyan;
+}
+
+.navbar h1 {
+  color: cyan;
+  text-shadow: 0 0 8px cyan;
+}
+
+.navbar button {
+  background: none;
+  border: 2px solid cyan;
+  color: cyan;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.navbar button:hover {
+  background: cyan;
+  color: #000;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 80vh;
+  background: url('images/bg_futuristic.jpg') no-repeat center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 20, 40, 0.6);
+}
+.profile-card {
+  position: relative;
+  z-index: 10;
+  background: rgba(0, 255, 255, 0.08);
+  border: 2px solid cyan;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 20px cyan;
+  width: 320px;
+}
+.profile-card img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid cyan;
+  box-shadow: 0 0 15px cyan;
+}
+.profile-card h2 {
+  margin: 15px 0 5px;
+  color: #fff;
+  text-shadow: 0 0 10px cyan;
+}
+.social-link {
+  display: inline-block;
+  margin-top: 10px;
+  background: cyan;
+  color: #000;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 0 8px cyan;
+}
+
+/* Galeri Desain */
+.design-gallery {
+  padding: 40px;
+  text-align: center;
+}
+.design-gallery h2 {
+  color: cyan;
+  text-shadow: 0 0 10px cyan;
+  margin-bottom: 20px;
+}
+.upload-box {
+  margin-bottom: 20px;
+}
+.upload-box input {
+  margin-right: 10px;
+}
+#addDesignBtn {
+  background: cyan;
+  color: #000;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+}
+.design-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.design-card {
+  border: 2px solid cyan;
+  border-radius: 10px;
+  box-shadow: 0 0 15px cyan;
+  overflow: hidden;
+  width: 320px;
+  aspect-ratio: 16/9;
+  background: rgba(0,255,255,0.05);
+}
+.design-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Modal Settings */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 20, 40, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+.modal-content {
+  background: rgba(0, 255, 255, 0.05);
+  border: 2px solid cyan;
+  border-radius: 20px;
+  box-shadow: 0 0 25px cyan;
+  padding: 25px;
+  width: 350px;
+  color: #fff;
+}
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0 15px;
+  border: 1px solid cyan;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.5);
+  color: #e0f7ff;
+}
+input:focus, textarea:focus {
+  box-shadow: 0 0 8px cyan;
+}
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
