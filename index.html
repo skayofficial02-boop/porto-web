@@ -50,6 +50,72 @@
 
   <script src="script.js"></script>
   <script>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio Futuristik</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>💠 NeoPortfolio</h1>
+    <button id="openSettings"><i data-lucide="settings"></i> Settings</button>
+  </nav>
+
+  <!-- Hero / Profil -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="profile-card">
+      <img id="profileImage" src="images/default_avatar.png" alt="Foto Profil">
+      <h2 id="profileName">Nama Anda</h2>
+      <p id="profileDesc">Desainer Futuristik & Visioner</p>
+      <a id="profileLink" href="#" target="_blank" class="social-link">Lihat Sosial Media</a>
+    </div>
+  </section>
+
+  <!-- Galeri Desain -->
+  <section class="design-gallery">
+    <h2><i data-lucide="image"></i> Hasil Desain Saya</h2>
+    <div class="upload-box">
+      <input type="file" id="designUpload" accept="image/*">
+      <button id="addDesignBtn"><i data-lucide="upload"></i> Upload Desain</button>
+    </div>
+    <div id="designContainer" class="design-container"></div>
+  </section>
+
+  <!-- Modal Settings -->
+  <div id="settingsModal" class="modal">
+    <div class="modal-content">
+      <h2><i data-lucide="user-cog"></i> Pengaturan Profil</h2>
+      <label>Foto Profil:</label>
+      <input type="file" id="avatarInput" accept="image/*">
+
+      <label>Nama:</label>
+      <input type="text" id="nameInput" placeholder="Masukkan nama anda">
+
+      <label>Deskripsi:</label>
+      <textarea id="descInput" rows="3" placeholder="Tuliskan deskripsi singkat..."></textarea>
+
+      <label>Link Sosial Media:</label>
+      <input type="url" id="socialInput" placeholder="https://instagram.com/namakamu">
+
+      <div class="btn-container">
+        <button id="saveBtn"><i data-lucide="save"></i> Simpan</button>
+        <button id="closeSettings"><i data-lucide="x-circle"></i> Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
+
     lucide.createIcons();
   </script>
 </body>
