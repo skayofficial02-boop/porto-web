@@ -1,43 +1,61 @@
-document.addEventListener('DOMContentLoaded', ()=>{
-  document.getElementById('year').textContent = new Date().getFullYear()
+const openSettings = document.getElementById("openSettings");
+const closeSettings = document.getElementById("closeSettings");
+const settingsModal = document.getElementById("settingsModal");
+const saveBtn = document.getElementById("saveBtn");
 
-  const nav = document.getElementById('nav')
-  const navToggle = document.getElementById('navToggle')
-  navToggle.addEventListener('click', ()=>{
-    if(nav.style.display === 'flex') nav.style.display = 'none'
-    else nav.style.display = 'flex'
-  })
+const avatarInput = document.getElementById("avatarInput");
+const profileImage = document.getElementById("profileImage");
+const nameInput = document.getElementById("nameInput");
+const descInput = document.getElementById("descInput");
+const socialInput = document.getElementById("socialInput");
 
-  // modal project details
-  const modal = document.getElementById('modal')
-  const modalTitle = document.getElementById('modalTitle')
-  const modalDesc = document.getElementById('modalDesc')
-  const modalClose = document.getElementById('modalClose')
+const profileName = document.getElementById("profileName");
+const profileDesc = document.getElementById("profileDesc");
+const profileLink = document.getElementById("profileLink");
 
-  document.querySelectorAll('.project-card .details-btn').forEach(btn=>{
-    btn.addEventListener('click', (e)=>{
-      const card = e.target.closest('.project-card')
-      modalTitle.textContent = card.dataset.title
-      modalDesc.textContent = card.dataset.desc
-      modal.classList.remove('hidden')
-      modal.setAttribute('aria-hidden','false')
-    })
-  })
+// Buka / Tutup Modal
+openSettings.onclick = () => settingsModal.style.display = "flex";
+closeSettings.onclick = () => settingsModal.style.display = "none";
 
-  modalClose.addEventListener('click', ()=>{
-    modal.classList.add('hidden')
-    modal.setAttribute('aria-hidden','true')
-  })
+// Load data dari localStorage
+window.addEventListener("load", () => {
+  const saved = JSON.parse(localStorage.getItem("futuristicPortfolio"));
+  if (saved) {
+    if (saved.avatar) profileImage.src = saved.avatar;
+    profileName.textContent = saved.name || "Nama Anda";
+    profileDesc.textContent = saved.desc || "Desainer Futuristik & Visioner";
+    profileLink.href = saved.social || "#";
 
-  modal.addEventListener('click', (e)=>{
-    if(e.target === modal) { modal.classList.add('hidden'); modal.setAttribute('aria-hidden','true') }
-  })
+    nameInput.value = saved.name || "";
+    descInput.value = saved.desc || "";
+    socialInput.value = saved.social || "";
+  }
+});
 
-  // form submit placeholder
-  const form = document.getElementById('contactForm')
-  form.addEventListener('submit', (e)=>{
-    e.preventDefault()
-    alert('Pesan terkirim! (contoh)')
-    form.reset()
-  })
-})
+// Preview Avatar
+avatarInput.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    profileImage.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+// Simpan perubahan
+saveBtn.addEventListener("click", () => {
+  const data = {
+    avatar: profileImage.src,
+    name: nameInput.value,
+    desc: descInput.value,
+    social: socialInput.value
+  };
+  localStorage.setItem("futuristicPortfolio", JSON.stringify(data));
+  profileName.textContent = data.name || "Nama Anda";
+  profileDesc.textContent = data.desc || "Desainer Futuristik & Visioner";
+  profileLink.href = data.social || "#";
+
+  alert("✅ Profil berhasil diperbarui!");
+  settingsModal.style.display = "none";
+});
