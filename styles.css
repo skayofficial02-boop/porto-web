@@ -1,56 +1,151 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portofolio Futuristik</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <h1>🌌 MyPortfolio</h1>
-    <button id="openSettings"><i data-lucide="settings"></i> Settings</button>
-  </nav>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
 
-  <!-- Homepage -->
-  <section class="hero">
-    <div class="overlay"></div>
-    <div class="profile-card">
-      <img id="profileImage" src="images/default_avatar.png" alt="Foto Profil">
-      <h2 id="profileName">Nama Anda</h2>
-      <p id="profileDesc">Desainer Futuristik & Visioner</p>
-      <a id="profileLink" href="#" target="_blank" class="social-link">Lihat Sosial Media</a>
-    </div>
-  </section>
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: #020d1f;
+  color: #e0f7ff;
+  overflow-x: hidden;
+}
 
-  <!-- Settings Modal -->
-  <div id="settingsModal" class="modal">
-    <div class="modal-content">
-      <h2><i data-lucide="user-cog"></i> Pengaturan Profil</h2>
-      <label>Foto Profil:</label>
-      <input type="file" id="avatarInput" accept="image/*">
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 10px cyan;
+}
 
-      <label>Nama:</label>
-      <input type="text" id="nameInput" placeholder="Masukkan nama anda">
+.navbar h1 {
+  color: cyan;
+  text-shadow: 0 0 8px cyan;
+}
 
-      <label>Deskripsi:</label>
-      <textarea id="descInput" rows="3" placeholder="Tuliskan deskripsi singkat..."></textarea>
+.navbar button {
+  background: none;
+  border: 2px solid cyan;
+  color: cyan;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-      <label>Link Sosial Media:</label>
-      <input type="url" id="socialInput" placeholder="https://instagram.com/namakamu">
+.navbar button:hover {
+  background: cyan;
+  color: #000;
+}
 
-      <div class="btn-container">
-        <button id="saveBtn"><i data-lucide="save"></i> Simpan</button>
-        <button id="closeSettings"><i data-lucide="x-circle"></i> Tutup</button>
-      </div>
-    </div>
-  </div>
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('images/bg_futuristic.jpg') no-repeat center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-  <script src="script.js"></script>
-  <script>
-    lucide.createIcons();
-  </script>
-</body>
-</html>
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 30, 0.6);
+}
+
+.profile-card {
+  position: relative;
+  z-index: 10;
+  background: rgba(0, 255, 255, 0.1);
+  border: 2px solid cyan;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 20px cyan;
+  width: 320px;
+}
+
+.profile-card img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid cyan;
+  box-shadow: 0 0 15px cyan;
+}
+
+.profile-card h2 {
+  margin: 15px 0 5px;
+  color: #fff;
+  text-shadow: 0 0 10px cyan;
+}
+
+.profile-card p {
+  font-size: 14px;
+  color: #b8e7ff;
+}
+
+.social-link {
+  display: inline-block;
+  margin-top: 10px;
+  background: cyan;
+  color: #000;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 0 8px cyan;
+}
+
+/* Modal Settings */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 20, 40, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.modal-content {
+  background: rgba(0, 255, 255, 0.05);
+  border: 2px solid cyan;
+  border-radius: 20px;
+  box-shadow: 0 0 25px cyan;
+  padding: 25px;
+  width: 350px;
+  color: #fff;
+}
+
+.modal-content h2 {
+  color: cyan;
+  text-align: center;
+  text-shadow: 0 0 10px cyan;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0 15px;
+  border: 1px solid cyan;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.5);
+  color: #e0f7ff;
+  outline: none;
+}
+
+input:focus, textarea:focus {
+  box-shadow: 0 0 8px cyan;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  font-family: 'Orbitron', sans-serif;
+}
