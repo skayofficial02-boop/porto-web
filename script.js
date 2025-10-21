@@ -59,3 +59,98 @@ saveBtn.addEventListener("click", () => {
   alert("✅ Profil berhasil diperbarui!");
   settingsModal.style.display = "none";
 });
+
+// ELEMENTS
+const openSettings = document.getElementById("openSettings");
+const closeSettings = document.getElementById("closeSettings");
+const settingsModal = document.getElementById("settingsModal");
+const saveBtn = document.getElementById("saveBtn");
+
+const avatarInput = document.getElementById("avatarInput");
+const profileImage = document.getElementById("profileImage");
+const nameInput = document.getElementById("nameInput");
+const descInput = document.getElementById("descInput");
+const socialInput = document.getElementById("socialInput");
+
+const profileName = document.getElementById("profileName");
+const profileDesc = document.getElementById("profileDesc");
+const profileLink = document.getElementById("profileLink");
+
+const designUpload = document.getElementById("designUpload");
+const addDesignBtn = document.getElementById("addDesignBtn");
+const designContainer = document.getElementById("designContainer");
+
+// BUKA / TUTUP MODAL
+openSettings.onclick = () => settingsModal.style.display = "flex";
+closeSettings.onclick = () => settingsModal.style.display = "none";
+
+// LOAD DATA DARI LOCALSTORAGE
+window.addEventListener("load", () => {
+  const saved = JSON.parse(localStorage.getItem("futuristicPortfolio"));
+  if (saved) {
+    if (saved.avatar) profileImage.src = saved.avatar;
+    profileName.textContent = saved.name || "Nama Anda";
+    profileDesc.textContent = saved.desc || "Desainer Futuristik & Visioner";
+    profileLink.href = saved.social || "#";
+    nameInput.value = saved.name || "";
+    descInput.value = saved.desc || "";
+    socialInput.value = saved.social || "";
+  }
+
+  const savedDesigns = JSON.parse(localStorage.getItem("designGallery")) || [];
+  savedDesigns.forEach((img) => addDesignToGallery(img));
+});
+
+// PREVIEW FOTO PROFIL
+avatarInput.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    profileImage.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+// SIMPAN PROFIL
+saveBtn.addEventListener("click", () => {
+  const data = {
+    avatar: profileImage.src,
+    name: nameInput.value,
+    desc: descInput.value,
+    social: socialInput.value
+  };
+  localStorage.setItem("futuristicPortfolio", JSON.stringify(data));
+  profileName.textContent = data.name || "Nama Anda";
+  profileDesc.textContent = data.desc || "Desainer Futuristik & Visioner";
+  profileLink.href = data.social || "#";
+  alert("✅ Profil berhasil diperbarui!");
+  settingsModal.style.display = "none";
+});
+
+// UPLOAD DESAIN
+addDesignBtn.addEventListener("click", () => {
+  const file = designUpload.files[0];
+  if (!file) return alert("Pilih gambar terlebih dahulu!");
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const imageData = e.target.result;
+    addDesignToGallery(imageData);
+
+    const savedDesigns = JSON.parse(localStorage.getItem("designGallery")) || [];
+    savedDesigns.push(imageData);
+    localStorage.setItem("designGallery", JSON.stringify(savedDesigns));
+  };
+  reader.readAsDataURL(file);
+});
+
+// TAMBAHKAN DESAIN KE HALAMAN
+function addDesignToGallery(imageData) {
+  const card = document.createElement("div");
+  card.classList.add("design-card");
+  const img = document.createElement("img");
+  img.src = imageData;
+  card.appendChild(img);
+  designContainer.appendChild(card);
+}
+
